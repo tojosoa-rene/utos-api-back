@@ -125,4 +125,7 @@ $app->router->group([
     require __DIR__.'/../routes/web.php';
 });
 
+// $app->register(L5Swagger\L5SwaggerServiceProvider::class);
+$app->withFacades();
+
 return $app;
