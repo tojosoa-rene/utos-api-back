@@ -128,4 +128,15 @@ $app->router->group([
 // $app->register(L5Swagger\L5SwaggerServiceProvider::class);
 $app->withFacades();
 
+$app->middleware([
+    App\Http\Middleware\CorsMiddleware::class
+]);
+
+$app->configure('auth');
+$app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
+
+$app->routeMiddleware([
+    'auth' => App\Http\Middleware\Authenticate::class,
+]);
+
 return $app;

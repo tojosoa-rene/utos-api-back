@@ -21,3 +21,13 @@ $router->post('/users', 'UserController@store');
 $router->get('/users/{id}', 'UserController@show');
 $router->put('/users/{id}', 'UserController@update');
 $router->delete('/users/{id}', 'UserController@destroy');
+
+// Authentication routes
+$router->post('/login', 'AuthController@login');
+$router->options('/{any:.*}', function () {
+    return response('', 200);
+});
+
+$router->get('/me', ['middleware' => 'auth', function () {
+    return auth()->user();
+}]);
