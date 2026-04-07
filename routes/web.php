@@ -22,8 +22,7 @@ $router->get('/users/{id}', 'UserController@show');
 $router->put('/users/{id}', 'UserController@update');
 $router->delete('/users/{id}', 'UserController@destroy');
 
-// Authentication routes
-$router->post('/login', 'AuthController@login');
+
 $router->options('/{any:.*}', function () {
     return response('', 200);
 });
@@ -31,3 +30,8 @@ $router->options('/{any:.*}', function () {
 $router->get('/me', ['middleware' => 'auth', function () {
     return auth()->user();
 }]);
+
+// Authentication routes
+$router->post('/login', 'AuthController@login');
+// Forgot Password (simulation)
+$router->post('/forgot-password', 'AuthController@forgotPassword');
