@@ -35,3 +35,5 @@ $router->get('/me', ['middleware' => 'auth', function () {
 $router->post('/login', 'AuthController@login');
 // Forgot Password (simulation)
 $router->post('/forgot-password', 'AuthController@forgotPassword');
+// Reset Password (simulation)
+$router->post('/reset-password', 'AuthController@resetPassword');

@@ -78,10 +78,31 @@ class AuthController extends Controller
                 'error' => 'User not found'
             ], 404);
         }
-        
+
         // simulation (tsy mbola mandefa mail)
         return response()->json([
             'message' => 'Reset link sent (simulation)'
+        ]);
+    }
+
+    /**
+     * Simulation de la fonctionnalité "Réinitialiser le mot de passe"
+     * @param Request $request
+     */
+    public function resetPassword(Request $request)
+    {
+        $token      = $request->input('token');
+        $password   = $request->input('password');
+
+        if (!$token || !$password) {
+            return response()->json([
+                'error' => 'Invalid data'
+            ], 400);
+        }
+
+        // simulation (tsy mbola tena update DB)
+        return response()->json([
+            'message' => 'Password updated (simulation)'
         ]);
     }
 }
